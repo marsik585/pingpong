@@ -1,3 +1,4 @@
+from pygame import *
 class GameSprite(sprite.Sprite):
     #конструктор класса
     def __init__(self, player_image, player_x, player_y, player_speed, w, h):
@@ -23,3 +24,27 @@ class Player(GameSprite):
             self.rect.x -= self.speed
         if keys[K_RIGHT] and self.rect.x < win_width - 80:
             self.rect.x += self.speed
+
+win_height = 500
+win_weight = 600
+
+background_color = (200,255,255)
+window = display.set_mode((win_weight, win_height))
+window.fill(background_color)
+clock = time.Clock()
+
+
+FPS = 60
+game = True
+finish = False
+
+while game:
+    for e in event.get():
+        if e.type == QUIT:
+            game = False
+
+    if not finish:
+        window.fill(background_color)
+
+    display.update()
+    clock.tick(FPS)
